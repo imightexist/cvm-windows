@@ -41,7 +41,7 @@ cd node
 7z x node.zip -y
 cd..
 title Compiling webapp
-cd node
+cd node\node-v16.13.0-win-x64
 set node=%cd%
 npm install --global npm
 npm install --global gulp-cli
