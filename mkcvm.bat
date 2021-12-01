@@ -46,6 +46,17 @@ set node=%cd%
 npm install --global npm
 npm install --global gulp-cli
 cd..
-cd webapp
+cd webapp\collab-vm-web-app-master
 "%node%\npm.cmd" install
 "%node%\gulp.cmd"
+title Copying files
+cd build
+copy *.* ..\..\..\server\http\*.* /Y
+cd ..\..\..
+title Done.
+echo Script has finished, run "%cd%\server\collab-vm-server.exe 6004" to start server
+set /p runserver=Do you want to start the server? (Y/N) 
+if %runserver% == Y "%cd%\server\collab-vm-server.exe 6004"
+if %runserver% == y "%cd%\server\collab-vm-server.exe 6004"
+if %runserver% == N exit
+if %runserver% == n exit
