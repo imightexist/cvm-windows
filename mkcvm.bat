@@ -32,13 +32,13 @@ powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/
 cd..
 title Extracting Files
 cd server
-7z e server.zip -y
+7z x server.zip -y
 cd..
 cd webapp
-7z e webapp.zip -y
+7z x webapp.zip -y
 cd..
 cd node
-7z e node.zip -y
+7z x node.zip -y
 cd..
 title Compiling webapp
 cd node
