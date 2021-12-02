@@ -47,8 +47,7 @@ call npm install --global npm
 call npm install --global gulp-cli
 cd..
 cd webapp\collab-vm-web-app-master
-call "%node%\npm.cmd" install
-copy package.json "%node%\..\package.json" /Y
+call "%node%\npm.cmd" init -y
 call "%node%\npm.cmd" install
 call "%node%\gulp.cmd"
 title Copying files
