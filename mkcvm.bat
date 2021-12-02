@@ -48,6 +48,7 @@ call npm install --global gulp-cli
 cd..
 cd webapp\collab-vm-web-app-master
 call "%node%\npm.cmd" install
+call "%node%\npm.cmd" install
 call "%node%\gulp.cmd"
 title Copying files
 cd build
