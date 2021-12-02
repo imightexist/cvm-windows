@@ -5,7 +5,7 @@ cd cvm
 title Downloading Server
 md server
 cd server
-powershell -Command "Invoke-WebRequest https://github-releases.githubusercontent.com/77417867/f52c9180-8e87-11eb-916e-32487d575ff1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211130T040513Z&X-Amz-Expires=300&X-Amz-Signature=a9b8fab0c5200b139b7040c4142c0c28b6f3b270b4e9407e6803b896bf8b731d&X-Amz-SignedHeaders=host&actor_id=94249457&key_id=0&repo_id=77417867&response-content-disposition=attachment%3B%20filename%3Dcollab-vm-server-windows-amd64.zip&response-content-type=application%2Foctet-stream -OutFile server.zip"
+powershell -Command "Invoke-WebRequest http://amogus.uk/public2/collab-vm-server-windows-amd64.zip -OutFile server.zip"
 cd..
 title Downloading Webapp
 md webapp
