@@ -45,9 +45,8 @@ cd node\node-v16.13.0-win-x64
 set node=%cd%
 call npm install --global npm
 call npm install --global gulp-cli
-cd..
+cd..\..
 cd webapp\collab-vm-web-app-master
-call "%node%\npm.cmd" init -y
 call "%node%\npm.cmd" install
 call "%node%\gulp.cmd"
 title Copying files
