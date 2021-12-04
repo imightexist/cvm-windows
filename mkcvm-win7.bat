@@ -53,7 +53,7 @@ call "%node%\gulp.cmd"
 title Copying files
 cd build
 copy *.* ..\..\..\server\win64\http\*.* /Y
-cd ..\..\..
+cd ..\..\..\..
 title Done.
 echo Script has finished, run "%cd%\server\collab-vm-server.exe 6004" to start server
 set /p runserver=Do you want to start the server? (Y/N) 
