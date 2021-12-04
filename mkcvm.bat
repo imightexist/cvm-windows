@@ -65,7 +65,7 @@ echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
 title Done.
-echo Script has finished, run "%cd%\server\win64\collab-vm-server.exe 6004" to start server. There is also a shortcut on your desktop.
+echo Script has finished, run "%cd%\server\win64\collab-vm-server.exe" 6004 to start server. There is also a shortcut on your desktop.
 set /p runserver=Do you want to start the server? (Y/N) 
 if %runserver% == Y "%cd%\server\win64\collab-vm-server.exe" 6004
 if %runserver% == y "%cd%\server\win64\collab-vm-server.exe" 6004
