@@ -5,7 +5,7 @@ cd cvm
 title Downloading Server
 md server
 cd server
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/collab-vm-server-windows-amd64.zip -OutFile server.zip"
+powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
 cd..
 title Downloading Webapp
 md webapp
@@ -32,7 +32,7 @@ powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/
 cd..
 title Extracting Files
 cd server
-7z x server.zip -y
+7z x server.7z -y
 cd..
 cd webapp
 7z x webapp.zip -y
