@@ -52,7 +52,7 @@ call "%node%\npm.cmd" install
 call "%node%\gulp.cmd"
 title Copying files
 cd build
-copy *.* ..\..\..\server\http\*.* /Y
+copy *.* ..\..\..\server\win64\http\*.* /Y
 cd ..\..\..
 title Done.
 echo Script has finished, run "%cd%\server\collab-vm-server.exe 6004" to start server
