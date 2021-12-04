@@ -1,4 +1,4 @@
 # cvm-windows
-script that compile cvm server on windows
+script that compiles cvm webapp lollolol
 
 i might make a bettervm version
