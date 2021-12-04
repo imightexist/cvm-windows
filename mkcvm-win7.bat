@@ -53,7 +53,7 @@ call "%node%\gulp.cmd"
 title Copying files
 cd build
 copy *.* ..\..\..\server\win64\http\*.* /Y
-cd ..\..\..\..
+cd ..\..\..
 title Creating desktop shortcut
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 echo "%cd%\server\win64\collab-vm-server.exe" 6004 > startserver.bat
