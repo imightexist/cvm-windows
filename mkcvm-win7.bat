@@ -43,6 +43,7 @@ cd..
 title Compiling webapp
 cd node\node-v13.14.0-win-x64
 set node=%cd%
+call npm config set strict-ssl false
 call npm install --global npm
 call npm install --global gulp-cli
 cd..\..
