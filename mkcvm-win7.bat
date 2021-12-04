@@ -55,9 +55,9 @@ cd build
 copy *.* ..\..\..\server\win64\http\*.* /Y
 cd ..\..\..\..
 title Done.
-echo Script has finished, run "%cd%\server\collab-vm-server.exe 6004" to start server
+echo Script has finished, run "%cd%\server\win64\collab-vm-server.exe 6004" to start server
 set /p runserver=Do you want to start the server? (Y/N) 
-if %runserver% == Y "%cd%\server\collab-vm-server.exe 6004"
-if %runserver% == y "%cd%\server\collab-vm-server.exe 6004"
+if %runserver% == Y "%cd%\server\win64\collab-vm-server.exe 6004"
+if %runserver% == y "%cd%\server\win64\collab-vm-server.exe 6004"
 if %runserver% == N exit
 if %runserver% == n exit
