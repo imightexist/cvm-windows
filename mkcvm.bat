@@ -56,7 +56,7 @@ copy *.* ..\..\..\server\win64\http\*.* /Y
 cd ..\..\..
 title Creating desktop shortcut
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
-echo cd "%cd%\server\win64\" > startserver.bat
+echo cd /d "%cd%\server\win64" > startserver.bat
 echo collab-vm-server.exe 6004 >> startserver.bat
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server.lnk" >> %SCRIPT%
@@ -67,8 +67,8 @@ echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
-echo cd "%cd%\server\win64\" > startserverwithlt.bat
-start "%cd%\node\npx.cmd" localtunnel --port 6004 >> startserverwithlt.bat
+echo cd /d "%cd%\server\win64" > startserverwithlt.bat
+start "%cd%\..\..\node\npx.cmd" localtunnel --port 6004 >> startserverwithlt.bat
 collab-vm-server.exe 6004 >> startserverwithlt.bat
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server.lnk" >> %SCRIPT%
@@ -82,8 +82,32 @@ title Done.
 echo Script has finished, to start the server: cd "%cd%\server\win64" & collab-vm-server.exe 6004
 echo If you want to use localtunnel for your server, run "%cd%\node\npx.cmd" localtunnel --port 6004
 echo There is also a shortcut on your desktop.
-set /p runserver=Do you want to start the server? (Y/N) 
-if %runserver% == Y "%cd%\server\win64\collab-vm-server.exe" 6004
-if %runserver% == y "%cd%\server\win64\collab-vm-server.exe" 6004
+goto runserver
+
+:runserver
+set /p runserver=Do you want to start the server? (Y/N/LT) 
+if %runserver% == Y goto startserver
+if %runserver% == y goto startserver
+if %runserver% == LT goto startserverwithlt
+if %runserver% == lt goto startserverwithlt
+if %runserver% == lT goto startserverwithlt
+if %runserver% == Lt goto startserverwithlt
 if %runserver% == N exit
 if %runserver% == n exit
+goto runserver
+
+:startserver
+cd /d "%cd%\server\win64"
+collab-vm-server.exe 6004
+set /p tryagain=Server has closed, run again? (Y/N)
+if %tryagain% == Y goto startserver
+if %tryagain% == y goto startserver
+if %tryagain% == N exit
+if %tryagain% == n exit
+exit
+
+:startserverwithlt
+cd /d "%cd%\server\win64"
+start "%cd\..\..\node\npx.cmd" localtunnel --port 6004
+collab-vm-server.exe 6004
+exit
