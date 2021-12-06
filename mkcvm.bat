@@ -56,7 +56,8 @@ copy *.* ..\..\..\server\win64\http\*.* /Y
 cd ..\..\..
 title Creating desktop shortcut
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
-echo cd "%cd%\server\win64\" & collab-vm-server.exe 6004 > startserver.bat
+echo cd "%cd%\server\win64\" > startserver.bat
+echo collab-vm-server.exe 6004 >> startserver.bat
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server.lnk" >> %SCRIPT%
 echo Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%
@@ -66,7 +67,9 @@ echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
-echo cd "%cd%\server\win64\" & start "%cd%\node\npx.cmd" localtunnel --port 6004 & collab-vm-server.exe 6004 > startserverwithlt.bat
+echo cd "%cd%\server\win64\" > startserverwithlt.bat
+start "%cd%\node\npx.cmd" localtunnel --port 6004 >> startserverwithlt.bat
+collab-vm-server.exe 6004 >> startserverwithlt.bat
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server.lnk" >> %SCRIPT%
 echo Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%
