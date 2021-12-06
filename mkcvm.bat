@@ -68,10 +68,11 @@ cscript /nologo %SCRIPT%
 del %SCRIPT%
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 echo cd /d "%cd%\server\win64" > startserverwithlt.bat
-echo start "%cd%\..\..\node\npx.cmd" localtunnel --port 6004 >> startserverwithlt.bat
+echo npx.cmd localtunnel --port 6004 > "%cd%\node\lt.cmd"
+echo start "%cd%\..\..\node\lt.cmd" >> startserverwithlt.bat
 collab-vm-server.exe 6004 >> startserverwithlt.bat
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
-echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server.lnk" >> %SCRIPT%
+echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server with tunnel.lnk" >> %SCRIPT%
 echo Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%
 echo oLink.TargetPath = "%cd%\startserverwithlt.bat" >> %SCRIPT%
 echo oLink.Arguments = "-h ServerNameOrIP -a ifix" >> %SCRIPT%
@@ -108,6 +109,6 @@ exit
 
 :startserverwithlt
 cd /d "%cd%\server\win64"
-start "%cd\..\..\node\npx.cmd" localtunnel --port 6004
+start "%cd\..\..\node\lt.cmd" localtunnel --port 6004
 collab-vm-server.exe 6004
 exit
