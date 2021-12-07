@@ -68,8 +68,8 @@ cscript /nologo %SCRIPT%
 del %SCRIPT%
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 echo cd /d "%cd%\server\win64" > startserverwithlt.bat
-echo npx.cmd localtunnel --port 6004 > "%cd%\node\lt.cmd"
-echo start "%cd%\..\..\node\lt.cmd" >> startserverwithlt.bat
+echo npx.cmd localtunnel --port 6004 > "%cd%\node\node-v13.14.0-win-x64\lt.cmd"
+echo start "%cd%\..\..\node\node-v13.14.0-win-x64\lt.cmd" >> startserverwithlt.bat
 collab-vm-server.exe 6004 >> startserverwithlt.bat
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server with tunnel.lnk" >> %SCRIPT%
@@ -81,7 +81,7 @@ cscript /nologo %SCRIPT%
 del %SCRIPT%
 title Done.
 echo Script has finished, to start the server: cd "%cd%\server\win64" & collab-vm-server.exe 6004
-echo If you want to use localtunnel for your server, run "%cd%\node\npx.cmd" localtunnel --port 6004
+echo If you want to use localtunnel for your server, run "%cd%\node\node-v13.14.0-win-x64\npx.cmd" localtunnel --port 6004
 echo There is also a shortcut on your desktop.
 goto runserver
 
@@ -109,6 +109,6 @@ exit
 
 :startserverwithlt
 cd /d "%cd%\server\win64"
-start "%cd\..\..\node\lt.cmd" localtunnel --port 6004
+start "%cd\..\..\node\node-v13.14.0-win-x64\lt.cmd" localtunnel --port 6004
 collab-vm-server.exe 6004
 exit
