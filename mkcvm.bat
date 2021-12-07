@@ -80,7 +80,8 @@ echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
 title Done.
-echo Script has finished, to start the server: cd "%cd%\server\win64" & collab-vm-server.exe 6004
+echo Script has finished, to start the server: cd "%cd%\server\win64"
+echo Then run: collab-vm-server.exe 6004
 echo If you want to use localtunnel for your server, run "%cd%\node\node-v13.14.0-win-x64\npx.cmd" localtunnel --port 6004
 echo There is also a shortcut on your desktop.
 goto runserver
