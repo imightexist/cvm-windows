@@ -110,6 +110,6 @@ exit
 
 :startserverwithlt
 cd /d "%cd%\server\win64"
-start "%cd\..\..\node\node-v13.14.0-win-x64\lt.cmd"
+start %cd%\..\..\node\node-v13.14.0-win-x64\npx.cmd localtunnel --port 6004
 collab-vm-server.exe 6004
 exit
