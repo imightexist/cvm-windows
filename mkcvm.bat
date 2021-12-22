@@ -66,28 +66,14 @@ echo oLink.Arguments = "-h ServerNameOrIP -a ifix" >> %SCRIPT%
 echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
-set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
-echo cd /d "%cd%\server\win64" > startserverwithlt.bat
-echo start "npx.cmd localtunnel --port 6004" > "%cd%\node\node-v13.14.0-win-x64\lt.cmd"
-echo "%cd%\..\..\node\node-v13.14.0-win-x64\lt.cmd" >> startserverwithlt.bat
-echo collab-vm-server.exe 6004 >> startserverwithlt.bat
-echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
-echo sLinkFile = "%USERPROFILE%\Desktop\CollabVM Server with tunnel.lnk" >> %SCRIPT%
-echo Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%
-echo oLink.TargetPath = "%cd%\startserverwithlt.bat" >> %SCRIPT%
-echo oLink.Arguments = "-h ServerNameOrIP -a ifix" >> %SCRIPT%
-echo oLink.Save >> %SCRIPT%
-cscript /nologo %SCRIPT%
-del %SCRIPT%
 title Done.
 echo Script has finished, to start the server: cd "%cd%\server\win64"
 echo Then run: collab-vm-server.exe 6004
-echo If you want to use localtunnel for your server, run "%cd%\node\node-v13.14.0-win-x64\npx.cmd" localtunnel --port 6004
 echo There is also a shortcut on your desktop.
 goto runserver
 
 :runserver
-set /p runserver=Do you want to start the server? (Y/N/LT) 
+set /p runserver=Do you want to start the server? (Y/N) 
 if %runserver% == Y goto startserver
 if %runserver% == y goto startserver
 if %runserver% == LT goto startserverwithlt
