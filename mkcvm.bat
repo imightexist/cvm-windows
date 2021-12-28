@@ -2,33 +2,62 @@
 title Starting script
 md cvm
 cd cvm
+title Checking Windows Version
+for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
 title Downloading Server
 md server
 cd server
-powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z', 'server.7z')"
 cd..
 title Downloading Webapp
 md webapp
 cd webapp
-powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master', 'webapp.zip')"
 cd..
 title Downloading Node
 md node
 cd node
-powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
+if %version% == "6.1" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
 cd..
 title Downloading 7-zip
 cd server
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe')"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll')"
 cd..
 cd webapp
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe')"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll')"
 cd..
 cd node
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe')"
+if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
+if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll')"
 cd..
 title Extracting Files
 cd server
