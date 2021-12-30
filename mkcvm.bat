@@ -4,60 +4,36 @@ md cvm
 cd cvm
 title Checking Windows Version
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
+title Downloading curl
+if %version% == "10.0" goto win8download
+if %version% == "6.3" goto win8download
+if %version% == "6.2" goto win8download
+if %version% == "6.1" goto win7download
+echo Sorry your Windows version is not supported.
+pause
+exit
+
+:start
 title Downloading Server
 md server
 cd server
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z -OutFile server.7z"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public/without_folder/collab-vm-server-win64-jpeg-amd64.7z', 'server.7z')"
+"%curl%" -Lk https://hfs-redirect.glitch.me/7zexe.html --output 7z.exe
+"%curl%" -Lk https://hfs-redirect.glitch.me/7zdll.html --output 7z.dll
+"%curl%" -Lk https://hfs-redirect.glitch.me/cvmserver.html --output server.7z
 cd..
 title Downloading Webapp
 md webapp
 cd webapp
-if %version% == "10.0" powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master -OutFile webapp.zip"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master', 'webapp.zip')"
+"%curl%" -Lk https://hfs-redirect.glitch.me/7zexe.html --output 7z.exe
+"%curl%" -Lk https://hfs-redirect.glitch.me/7zexe.html --output 7z.dll
+"%curl%" -Lk https://codeload.github.com/computernewb/collab-vm-web-app/zip/refs/heads/master --output webapp.zip
 cd..
 title Downloading Node
 md node
 cd node
-if %version% == "10.0" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
-if %version% == "6.1" powershell -Command "Invoke-WebRequest https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip -OutFile node.zip"
-cd..
-title Downloading 7-zip
-cd server
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe')"
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll')"
-cd..
-cd webapp
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe')"
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll')"
-cd..
-cd node
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe -OutFile 7z.exe"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.exe')"
-if %version% == "10.0" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.3" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.2" powershell -Command "Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll -OutFile 7z.dll"
-if %version% == "6.1" powershell -Command "(New-Object Net.WebClient).DownloadFile('Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll', 'Invoke-WebRequest http://amogus.uk/public2/7zipcommandonly/7z.dll')"
+"%curl%" -Lk https://hfs-redirect.glitch.me/7zexe.html --output 7z.exe
+"%curl%" -Lk https://hfs-redirect.glitch.me/7zexe.html --output 7z.dll
+"%curl%" -0 https://nodejs.org/download/release/v13.14.0/node-v13.14.0-win-x64.zip --output node.zip
 cd..
 title Extracting Files
 cd server
@@ -128,3 +104,13 @@ cd /d "%cd%\server\win64"
 start %cd%\..\..\node\node-v13.14.0-win-x64\npx.cmd localtunnel --port 6004
 collab-vm-server.exe 6004
 exit
+
+:win8download
+powershell -Command "Invoke-WebRequest https://cdn-103.anonfiles.com/H708Y3n2x9/3ef6027d-1640900238/curl.exe -OutFile curl.exe"
+set curl="%cd%\curl.exe"
+goto start
+
+:win7download
+powershell -Command "(New-Object Net.WebClient).DownloadFile('https://cdn-103.anonfiles.com/H708Y3n2x9/3ef6027d-1640900238/curl.exe', 'curl.exe')"
+set curl=%cd%\curl.exe
+goto start
