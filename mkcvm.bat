@@ -5,10 +5,10 @@ cd cvm
 title Checking Windows Version
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
 title Downloading curl
-if %version% == "10.0" goto win8download
-if %version% == "6.3" goto win8download
-if %version% == "6.2" goto win8download
-if %version% == "6.1" goto win7download
+if %version% == 10.0 goto win8download
+if %version% == 6.3 goto win8download
+if %version% == 6.2 goto win8download
+if %version% == 6.1 goto win7download
 echo Sorry your Windows version is not supported.
 pause
 exit
