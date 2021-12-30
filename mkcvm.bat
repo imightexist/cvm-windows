@@ -107,7 +107,7 @@ exit
 
 :win8download
 powershell -Command "Invoke-WebRequest https://cdn-103.anonfiles.com/H708Y3n2x9/3ef6027d-1640900238/curl.exe -OutFile curl.exe"
-set curl="%cd%\curl.exe"
+set curl=%cd%\curl.exe
 goto start
 
 :win7download
